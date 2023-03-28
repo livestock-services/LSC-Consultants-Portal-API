@@ -1,0 +1,40 @@
+{
+  "name": "lsc-consultants-portal",
+  "version": "1.0.0",
+  "private": true,
+  "main": "app.js",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^10.0.0",
+    "express": "^4.18.2",
+    "heroku": "^7.67.1",
+    "http-errors": "~1.6.3",
+    "jade": "^1.9.2",
+    "jsonwebtoken": "^8.5.1",
+    "luxon": "^2.5.2",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.38",
+    "mongoose": "^5.13.14",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.20"
+  },
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/livestock-services/livestock-api.git"
+  },
+  "author": "Kondwani Mwale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/livestock-services/livestock-api/issues"
+  },
+  "homepage": "https://github.com/livestock-services/livestock-api#readme"
+}

@@ -1,2 +1,2 @@
-# LSC-Consultants-Portal-API
-API for queries from Consultants Portal
+# livestock-api
+A REST API for various requests, using Express.js and MongoDB.

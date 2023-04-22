@@ -1,4 +1,6 @@
 const express = require('express');
+const BioSubmissions = require('../models/BioSubmissions');
+const FeedSubmissions = require('../models/FeedSubmissions');
 const router = express.Router();
 const SampleInformation = require('../models/SampleInformation');
 const Submissions = require('../models/Submissions');
@@ -78,7 +80,7 @@ router.post('/sampleInfo/addNewSampleInformationRecord', async (req,res) => {
 });
 
 
-//-------------------------------------------------------------------SUBMISSIONS--------------------------------------------------------------------------------------//
+//-------------------------------------------------------------------DATA FILES/BIO DATA/SUBMISSIONS--------------------------------------------------------------------------------------//
 router.get('/submissions', async (req,res)=>{
    
     res.send('Lab Route is grafting!');
@@ -175,6 +177,140 @@ router.post('/submissions/addNewSubmissionsRecord', async (req,res) => {
          }
 });
 
+//----------------------------------------------------------------------RECEIVING/ BIO SUBMISSIONS ---------------------------------------------------------//
+
+router.get('/bioSubmissions', async (req,res)=>{
+  
+    res.send('Bio Submissions is grafting!');
+
+});
+
+
+
+
+router.get('/bioSubmissions/allBioSubmissions', async (req,res)=>{
+   
+    try {
+        const allBioSubmissions = await BioSubmissions.find();
+        res.json({
+            
+
+            status: 'Successfully retreived all Bio Submissions!',
+            data: allBioSubmissions
+            
+        });
+ 
+    } catch (error) {
+        res.json({ message: error})
+    }
+ });
+
+  //CREATE NEW PFIs
+router.post('/bioSubmissions/addNewBioSubmission', async (req,res) => {
+    
+    req.body.date = new Date()
+
+    const newDate =  (req.body.date).toLocaleDateString('en-US');
+    
+     try {  
+        const newBioSubmission = new BioSubmissions({
+        
+    
+        bioSubmissionNumber:req.body.bioSubmissionNumber,
+        clientName:req.body.clientName,
+        dateSubmitted:req.body.dateSubmitted,
+        timeStamp:req.body.timeStamp,
+        date: newDate,
+        createdBy:req.body.createdBy
+       
+                
+        });
+
+           
+     
+        console.log(newBioSubmission);
+       
+       const savedBioSubmission = await newBioSubmission.save();
+         console.log(savedBioSubmission);
+             res.json({
+                
+                 Message: 'Successfully added a new lab Record !',
+                 data: savedBioSubmission
+             });
+         } catch (err) {
+              res.json({ message: err })
+         }
+});
+
+
+
+//----------------------------------------------------------------------RECEIVING/ FEED SUBMISSIONS ---------------------------------------------------------//
+
+router.get('/feedSubmissions', async (req,res)=>{
+  
+    res.send('Feed Submissions is grafting!');
+
+});
+
+
+
+
+router.get('/feedSubmissions/allFeedSubmissions', async (req,res)=>{
+   
+    try {
+        const allFeedSubmissions = await FeedSubmissions.find();
+        res.json({
+            
+
+            status: 'Successfully retreived all Feed Submissions!',
+            data: allFeedSubmissions
+            
+        });
+ 
+    } catch (error) {
+        res.json({ message: error})
+    }
+ });
+
+  //CREATE NEW PFIs
+router.post('/feedSubmissions/addNewFeedSubmission', async (req,res) => {
+    
+    req.body.date = new Date()
+
+    const newDate =  (req.body.date).toLocaleDateString('en-US');
+    
+     try {  
+        const newFeedSubmission = new FeedSubmissions({
+        
+            
+
+        feedSubmissionNumber:req.body.feedSubmissionNumber,
+        feedClientName:req.body.feedClientName,
+        feedDescription:req.body.feedDescription,
+        typeOfSample:req.body.typeOfSample,
+        dateSubmitted:req.body.dateSubmitted,
+        timeStamp:req.body.timeStamp,
+        date: newDate,
+        createdBy:req.body.createdBy
+       
+                
+        });
+
+           
+     
+        console.log(newFeedSubmission);
+       
+       const savedFeedSubmission = await newFeedSubmission.save();
+         console.log(savedFeedSubmission);
+             res.json({
+                
+                 Message: 'Successfully added a new lab Record !',
+                 data: savedFeedSubmission
+             });
+         } catch (err) {
+              res.json({ message: err })
+         }
+});
 
 
 

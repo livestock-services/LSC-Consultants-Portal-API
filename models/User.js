@@ -4,12 +4,12 @@ const moment = require('moment');
 const tz = require ('moment-timezone');
 
 const UserSchema = new mongoose.Schema({
-    name:{
-        type: String,
-        required: true,
-        max: 255,
-        min: 2
-    },
+     name:{
+         type: String,
+         required: true,
+         max: 255,
+         min: 2
+     },
     email:{
         type: String,
         required: true,
@@ -22,16 +22,13 @@ const UserSchema = new mongoose.Schema({
         max:1024,
         min:8 
     },
+
+    role: { 
+        type: String,
+        enum: ['user', 'admin'],
+        default:'user'
+         }
     
-
-
-    date: {         
-        type:String,
-      // default: moment().utc().format('dddd, MMMM Do YYYY, h:mm:ss a zz') 
-      default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
-      
-      // default: moment().tz('America/Los_Angeles').format('dddd, MMMM Do YYYY, h:mm:ss a zz')         
-    },
 });
 
 module.exports= mongoose.model('Users', UserSchema);

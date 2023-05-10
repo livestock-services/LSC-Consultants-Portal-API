@@ -73,9 +73,9 @@ router.get('/User/:id', async (req,res)=>{
       
         const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
         res.header('auth-token',token).send({ message: `Logged in ${user.name} !`,
-          name:user.name, id: user._id, role: user.role, token: token});
+          name:user.name, id: user._id, role: user.role, token: token });
  
-      // res.send(`Logged In as ${user.name}`);
+       res.send(`Logged In as ${user.name}, ${user.role}` );
         
 
 
@@ -87,6 +87,27 @@ router.get('/User/:id', async (req,res)=>{
     });
 
 
+    //--------UPDATE A PAYMENT STATUS------//
+router.options('/activateUser/:id',cors());
+
+router.put('/activateUser/:id', async (req,res,next )=>{
+  try {
+      const activeUser = await User.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function(){
+          User.findOne({ _id: req.params.id }).then(function(){
+              res.json({
+
+                  status: 'Successfully activated user!',
+                  data: activeUser
+                  
+              })
+          })
+      })
+     
+
+  } catch (error) {
+      res.json({ message: error})
+  }
+});
 
 
 
@@ -118,9 +139,10 @@ router.get('/User/:id', async (req,res)=>{
        //CREATE NEW USERS
         try {  
        const registeredUser= new User({
-           name: req.body.name,
-           email: req.body.email,
-           password: hashPassword,
+           name:req.body.name,
+           email:req.body.email,
+           password:hashPassword,
+           role:req.body.role
           
        });
     

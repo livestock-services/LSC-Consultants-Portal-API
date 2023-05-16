@@ -21,7 +21,8 @@
     "moment-timezone": "^0.5.38",
     "mongoose": "^5.13.14",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "sequential-ids": "0.0.0"
   },
   "scripts": {
     "start": "nodemon app.js",

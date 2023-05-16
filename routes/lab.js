@@ -6,8 +6,12 @@ const SampleInformation = require('../models/SampleInformation');
 const Submissions = require('../models/Submissions');
 const verify = require('./verifyToken');
 const { NMs, FFs, SEs, MEs, SCs} = require('../models/FeedData')
-
-
+var sequential = require("sequential-ids");
+const mongoose = require('mongoose');
+const { CS, BS } = require('../models/BioSubmissions');
+const { FS, FCS } = require('../models/FeedSubmissions');
+require('dotenv').config();
+var generatorA = new sequential.Generator({port: 88});
 
 
 router.get('/', async (req,res)=>{
@@ -191,8 +195,13 @@ router.get('/bioSubmissions', async (req,res)=>{
 
 router.get('/bioSubmissions/allBioSubmissions', async (req,res)=>{
    
+
+   
+    
     try {
-        const allBioSubmissions = await BioSubmissions.find();
+     
+     
+        const allBioSubmissions = await BS.find();
         res.json({
             
 
@@ -207,40 +216,64 @@ router.get('/bioSubmissions/allBioSubmissions', async (req,res)=>{
  });
 
   //CREATE NEW PFIs
-router.post('/bioSubmissions/addNewBioSubmission', async (req,res) => {
+router.post('/bioSubmissions/addNewBioSubmission', (req,res) => {
     
     req.body.date = new Date()
 
     const newDate =  (req.body.date).toLocaleDateString('en-US');
+    const newTimeStamp =  (req.body.date).toLocaleTimeString('en-US');
+   
     
-     try {  
-        const newBioSubmission = new BioSubmissions({
+            
+    
+
+      CS.findOneAndUpdate(
+            {id:"autoval"},
+            {"$inc":{"seq":1}},
+            {new:true},(err,cd)=>{
+    
+                let seqId;
+    
+    
+                if(cd==null){
+                    const newval = new CS({
+                        id:"autoval", seq:1
+                    })
+    
+                    newval.save();
+                    seqId = 1
+                } else{
+                    seqId = cd.seq
+                }
+
+                const newBioSubmission = new BS({
         
     
-        bioSubmissionNumber:req.body.bioSubmissionNumber,
-        clientName:req.body.clientName,
-        dateSubmitted:req.body.dateSubmitted,
-        timeStamp:req.body.timeStamp,
-        date: newDate,
-        createdBy:req.body.createdBy
-       
-                
-        });
+                    bioSubmissionNumber:seqId,
+                    clientName:req.body.clientName,
+                    dateSubmitted:newDate,
+                    timeStamp:newTimeStamp,
+                    createdBy:req.body.createdBy
+                   
+                            
+                    });
 
-           
-     
-        console.log(newBioSubmission);
-       
-       const savedBioSubmission = await newBioSubmission.save();
-         console.log(savedBioSubmission);
-             res.json({
+                    console.log(newBioSubmission);
+                    const savedBioSubmission = newBioSubmission.save();
+                      console.log(savedBioSubmission);
+                       res.json({
                 
                  Message: 'Successfully added a new lab Record !',
                  data: savedBioSubmission
              });
-         } catch (err) {
-              res.json({ message: err })
-         }
+
+            
+            }
+        );
+
+
+    
+       
 });
 
 
@@ -259,7 +292,7 @@ router.get('/feedSubmissions', async (req,res)=>{
 router.get('/feedSubmissions/allFeedSubmissions', async (req,res)=>{
    
     try {
-        const allFeedSubmissions = await FeedSubmissions.find();
+        const allFeedSubmissions = await FS.find();
         res.json({
             
 
@@ -274,43 +307,65 @@ router.get('/feedSubmissions/allFeedSubmissions', async (req,res)=>{
  });
 
   //CREATE NEW PFIs
-router.post('/feedSubmissions/addNewFeedSubmission', async (req,res) => {
+router.post('/feedSubmissions/addNewFeedSubmission', (req,res) => {
     
     req.body.date = new Date()
 
     const newDate =  (req.body.date).toLocaleDateString('en-US');
+    const newTimeStamp =  (req.body.date).toLocaleTimeString('en-US');
     
-     try {  
-        const newFeedSubmission = new FeedSubmissions({
+
+    FCS.findOneAndUpdate(
+        {id:"autoval"},
+        {"$inc":{"seq":1}},
+        {new:true},(err,cd)=>{
+
+            let seqId;
+
+
+            if(cd==null){
+                const newval = new FCS({
+                    id:"autoval", seq:1
+                })
+
+                newval.save();
+                seqId = 1
+            } else{
+                seqId = cd.seq
+            }
+
+            const newFeedSubmission = new FS({
         
             
 
-        feedSubmissionNumber:req.body.feedSubmissionNumber,
-        feedClientName:req.body.feedClientName,
-        feedDescription:req.body.feedDescription,
-        typeOfSample:req.body.typeOfSample,
-        dateSubmitted:req.body.dateSubmitted,
-        timeStamp:req.body.timeStamp,
-        date: newDate,
-        createdBy:req.body.createdBy
-       
-                
-        });
+                feedSubmissionNumber:seqId,
+                feedClientName:req.body.feedClientName,
+                feedDescription:req.body.feedDescription,
+                typeOfSample:req.body.typeOfSample,
+                dateSubmitted:newDate,
+                timeStamp:newTimeStamp,
+                date: newDate,
+                createdBy:req.body.createdBy
+               
+                        
+                });
+        
+                   
+             
+                console.log(newFeedSubmission);
+               
+               const savedFeedSubmission = newFeedSubmission.save();
+                 console.log(savedFeedSubmission);
+                     res.json({
+                        
+                         Message: 'Successfully added a new lab Record !',
+                         data: savedFeedSubmission
+                     });
 
-           
-     
-        console.log(newFeedSubmission);
-       
-       const savedFeedSubmission = await newFeedSubmission.save();
-         console.log(savedFeedSubmission);
-             res.json({
-                
-                 Message: 'Successfully added a new lab Record !',
-                 data: savedFeedSubmission
-             });
-         } catch (err) {
-              res.json({ message: err })
-         }
+        
+        }
+    );
+    
 });
 
 

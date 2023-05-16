@@ -4,7 +4,7 @@ const tz = require ('moment-timezone')
 const luxon = require ('luxon')
 
 
-const BioSubmissionsSchema = new mongoose.Schema({
+const BioSubmissionsSch = new mongoose.Schema({
 
         bioSubmissionNumber:{
             type: String,
@@ -44,4 +44,28 @@ const BioSubmissionsSchema = new mongoose.Schema({
         
 });
 
-module.exports= mongoose.model("Bio Submissions", BioSubmissionsSchema);
+
+const CounterSch = new mongoose.Schema({
+
+    id:{
+        type: String,
+        
+    },
+
+    seq:{
+      type:Number  
+    },
+   
+    createdBy:{
+        type: String
+      },
+   
+    
+    
+});
+
+const BioSubmissionsSchema = mongoose.model("Bio Submissions", BioSubmissionsSch);
+
+const CounterSchema = mongoose.model("Counter", CounterSch);
+
+module.exports = { BS:BioSubmissionsSchema, CS:CounterSchema }

@@ -25,7 +25,7 @@ const UserSchema = new mongoose.Schema({
 
     role: { 
         type: String,
-        enum:['Admin','user','Manager','Vet Consultant','Agro Consultant','Lab Consultant','Nutrition Consultant','AI Consultant','Irrigation/Waterpump Consultant','Fence Consultant','Fish Consultant'],
+        enum:['Admin','user','Manager','Vet Consultant','Agro Consultant','Lab Consultant','Nutrition Consultant','AI Consultant','Irrigation Consultant','Fence Consultant','Fish Consultant'],
         default:'user'
  
          }

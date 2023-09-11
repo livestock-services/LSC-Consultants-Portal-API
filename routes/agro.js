@@ -46,6 +46,7 @@ router.post('/addNewAgroRecord', async (req,res) => {
         clientTown:req.body.clientTown,
         clientComments:req.body.clientComments,
         agroCategory:req.body.agroCategory,
+        agroOther:req.body.agroOther,
         date: newDate,
         createdBy:req.body.createdBy
        

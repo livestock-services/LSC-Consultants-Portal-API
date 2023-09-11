@@ -17,17 +17,22 @@ const VetSchema = new mongoose.Schema({
 
         vetClientLocation:{
             type:String,
-            required:true
+           
         },
 
         vetCategory:{
             type: String,
-            required: true
+           
+        },
+
+        vetOther:{
+            type: String,
+        
         },
 
         vetClientTown:{
             type:String,
-            required:true
+            
         },
 
 

@@ -16,12 +16,12 @@ const BeefAI = new mongoose.Schema({
 
     beefAIClientLocation:{
         type:String,
-        required:true
+      
     },
 
     beefAIClientTown:{
         type:String,
-        required:true
+        
     },
 
     beefAIClientComments:{
@@ -31,7 +31,12 @@ const BeefAI = new mongoose.Schema({
 
     beefAICategory:{
         type: String,
-        required: true
+        
+    },
+
+    beefAICOtherategory:{
+        type: String,
+        
     },
 
         date:{

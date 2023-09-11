@@ -247,13 +247,46 @@ router.post('/bioSubmissions/addNewBioSubmission', (req,res) => {
                 }
 
                 const newBioSubmission = new BS({
-        
-    
-                    bioSubmissionNumber:seqId,
-                    clientName:req.body.clientName,
-                    dateSubmitted:newDate,
-                    timeStamp:newTimeStamp,
-                    createdBy:req.body.createdBy
+                   
+                        clientName: req.body.clientName,
+                        clientAddress: req.body.clientAddress,
+                        clientEmail: req.body.clientEmail,
+                        clientContactNumber: req.body.clientContactNumber,
+                        examsRequested: req.body.examsRequested,
+                        testCountHPE: req.body.testCountHPE,
+                        testCountFEC: req.body.testCountFEC,
+                        testCountHI: req.body.testCountHI,
+                        testCountMI: req.body.testCountMI,
+                        testCountET: req.body.testCountET,
+                        testCountRBT: req.body.testCountRBT,
+                        testCountBrucellosis: req.body.testCountBrucellosis,
+                        testCountChlamydia: req.body.testCountChlamydia,
+                        testCountProFlok: req.body.testCountProFlok,
+                        testCountFBC: req.body.testCountFBC,
+                        testCountPCV: req.body.testCountPCV,
+                        testCountCDP: req.body.testCountCDP,
+                        testCountUT: req.body.testCountUT,
+                        testCountCulture: req.body.testCountCulture,
+                        testCountCS: req.body.testCountCS,
+                        testCountBCC: req.body.testCountBCC,
+                        testCountBCS: req.body.testCountBCS,
+                        testCountIS: req.body.testCountIS,
+                        testCountRVPT: req.body.testCountRVPT,
+                        testCountST: req.body.testCountST,
+                        testCountFT: req.body.testCountFT,
+                        testCountLayers: req.body.testCountLayers,
+                        testCountBovine: req.body.testCountBovine,
+                        testCountSmallStock: req.body.testCountSmallStock,
+                        testCountBroilers: req.body.testCountBroilers,
+                        testCountPig: req.body.testCountPig,
+                        testCountFreeRange: req.body.testCountFreeRange,
+                        testCountFarmSample: req.body.testCountFarmSample,
+                        testCountDisposables: req.body.testCountDisposables, 
+                        bioSubmissionNumber:seqId,
+                        dateSubmitted:newDate,
+                        date:newDate,
+                        timeStamp:newTimeStamp,
+                        createdBy:req.body.createdBy
                    
                             
                     });

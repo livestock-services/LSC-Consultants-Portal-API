@@ -12,17 +12,17 @@ const NutritionSchema = new mongoose.Schema({
         },
         nutritionClientPhoneNumber:{
             type:String,
-            required:true
+            
         },
 
         nutritionClientLocation:{
             type:String,
-            required:true
+           
         },
 
         nutritionClientTown:{
             type:String,
-            required:true
+            
         },
 
         nutritionClientComments:{
@@ -32,7 +32,12 @@ const NutritionSchema = new mongoose.Schema({
 
         nutritionCategory:{
             type: String,
-            required: true
+            
+        },
+
+        nutritionOtherCategory:{
+            type: String,
+          
         },
        
 

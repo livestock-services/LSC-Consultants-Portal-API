@@ -46,6 +46,7 @@ router.post('/addNewNutritionRecord', async (req,res) => {
         nutritionClientTown:req.body.nutritionClientTown,
         nutritionClientComments:req.body.nutritionClientComments,
         nutritionCategory:req.body.nutritionCategory,
+        nutritionOtherCategory:req.body.nutritionOtherCategory,
         date: newDate,
         createdBy:req.body.createdBy
        

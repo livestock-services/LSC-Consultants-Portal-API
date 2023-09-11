@@ -27,12 +27,22 @@ const VetPostMortemSchema = new mongoose.Schema({
 
         vetPostMortemCategory:{
             type: String,
-            required: true
+           
+        },
+
+        vetPostMortemOtherCategory:{
+            type: String,
+           
         },
 
         vetPostMortemDiseases:{
             type: String,
-            required: true
+            
+        },
+
+        vetPostMortemOtherDiseases:{
+            type: String,
+            
         },
 
         vetPMComments:{

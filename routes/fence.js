@@ -37,7 +37,11 @@ router.post('/addNewFenceRecord', async (req,res) => {
     
     req.body.date = new Date()
 
-    const newDate =  (req.body.date).toLocaleDateString('en-US');
+    const newDate =  (req.body.date).toLocaleDateString();
+
+ 
+
+
      try {  
         const newFenceConsult = new Fence({
         

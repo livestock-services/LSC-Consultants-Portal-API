@@ -8,26 +8,31 @@ const AgroSchema = new mongoose.Schema({
 
         clientName:{
             type: String,
-            required: true
+            
         },
         clientPhoneNumber:{
             type:String,
-            required:true
+            
         },
 
         clientLocation:{
             type:String,
-            required:true
+            
         },
 
         agroCategory:{
             type: String,
-            required: true
+            
+        },
+
+        agroOther:{
+            type: String,
+            
         },
 
         clientTown:{
             type:String,
-            required:true
+           
         },
 
         clientComments:{

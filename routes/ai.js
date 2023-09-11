@@ -45,6 +45,7 @@ router.post('/beef/addNewBeefAIRecord', async (req,res) => {
         beefAIClientTown:req.body.beefAIClientTown,
         beefAIClientComments:req.body.beefAIClientComments,
         beefAICategory:req.body.beefAICategory,
+        beefAIOtherCategory:req.body.beefAIOtherCategory,
         date: newDate,
         createdBy:req.body.createdBy
        

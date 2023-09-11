@@ -1,6 +1,6 @@
 const moment = require('moment');
 const mongoose = require('mongoose');
-const tz = require ('moment-timezone')
+const tz = require ('moment-timezone');
 
 //---- AMENDED PERMIT APPLICATION SCHEMA---//
 const No3Meal = new mongoose.Schema({
@@ -157,7 +157,7 @@ const No3Meal = new mongoose.Schema({
 
         date:{
             type: String,
-            default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
+            
         },
 
         createdBy:{
@@ -289,7 +289,7 @@ const SoyaFF = new mongoose.Schema({
    
         date:{
             type: String,
-            default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
+            
         }, 
 
         createdBy:{
@@ -422,7 +422,7 @@ const SoyaSE = new mongoose.Schema({
    
         date:{
             type: String,
-            default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
+            
         }, 
 
         createdBy:{
@@ -556,7 +556,7 @@ const SoyaME = new mongoose.Schema({
    
         date:{
             type: String,
-            default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
+            
         }, 
 
         createdBy:{
@@ -697,7 +697,7 @@ const SunflowerCakeSC = new mongoose.Schema({
    
                     date:{
                         type: String,
-                        default: moment().tz("Africa/Lusaka").format('dddd, MMMM Do YYYY') 
+                        
                     }, 
 
                     createdBy:{

@@ -60,7 +60,7 @@ router.post('/addNewFishRecord', async (req,res) => {
          console.log(savedFishConsult);
              res.json({
                 
-                 Message: 'Successfully added a new Pig AI Record !',
+                 Message: 'Successfully added a new Fish Record !',
                  data: savedFishConsult
              });
          } catch (err) {

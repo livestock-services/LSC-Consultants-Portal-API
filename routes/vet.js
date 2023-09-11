@@ -54,6 +54,7 @@ router.post('/addNewVetRecord', async (req,res) => {
         vetClientTown:req.body.vetClientTown,
         vetComments:req.body.vetComments,
         vetCategory:req.body.vetCategory,
+        vetOther:req.body.vetOther,
         vetComments:req.body.vetComments,
         date: newDate,
         createdBy:req.body.createdBy
@@ -139,7 +140,9 @@ router.post('/addNewPostMortem', async (req,res) => {
         vetPostMortemClientTown:req.body.vetPostMortemClientTown,
         vetPMComments:req.body.vetPMComments,
         vetPostMortemCategory:req.body.vetPostMortemCategory,
+        vetPostMortemOtherCategory:req.body.vetPostMortemOtherCategory,
         vetPostMortemDiseases:req.body.vetPostMortemDiseases,
+        vetPostMortemOtherDiseases:req.body.vetPostMortemOtherDiseases,
         vetPMComments:req.body.vetPMComments,
         date: newDate,
         createdBy:req.body.createdBy

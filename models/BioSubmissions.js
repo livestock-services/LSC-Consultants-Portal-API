@@ -18,12 +18,26 @@ const BioSubmissionsSch = new mongoose.Schema({
     timeStamp: {
         type: String,
     },
+
+    testUrgency:{
+      type: String,
+      
+    },
+
+    submittedBy:{
+      type:String,
+      
+    },
     date: {
         type: String,
     },
     createdBy: {
         type: String,
     },
+
+    receivedBy: {
+      type: String,
+     },
 
     examsRequested: {
       type: Array

@@ -252,6 +252,8 @@ router.post('/bioSubmissions/addNewBioSubmission', (req,res) => {
                         clientAddress: req.body.clientAddress,
                         clientEmail: req.body.clientEmail,
                         clientContactNumber: req.body.clientContactNumber,
+                        testUrgency:req.body.testUrgency,
+                        submittedBy:req.body.submittedBy,
                         examsRequested: req.body.examsRequested,
                         testCountHPE: req.body.testCountHPE,
                         testCountFEC: req.body.testCountFEC,
@@ -286,7 +288,8 @@ router.post('/bioSubmissions/addNewBioSubmission', (req,res) => {
                         dateSubmitted:newDate,
                         date:newDate,
                         timeStamp:newTimeStamp,
-                        createdBy:req.body.createdBy
+                        createdBy:req.body.createdBy,
+                        receivedBy:req.body.receivedBy
                    
                             
                     });

@@ -28,6 +28,172 @@ const BioSubmissionsSch = new mongoose.Schema({
       type:String,
       
     },
+
+    consultingVet:{
+        type: String,
+        
+      },
+  
+      vetPhoneNumber:{
+        type:String,
+        
+      },
+
+      reportSentVia:{
+        type: String,
+        
+      },
+  
+      animalLocation:{
+        type:String,
+        
+      },
+
+     // Add the fields here with default empty strings
+     animalType: {
+        type: String,
+        default: "",
+    },
+    otherSampleType: {
+        type: String,
+        default: "",
+    },
+    otherAnimalType: {
+        type: String,
+        default: "",
+    },
+    breed: {
+        type: String,
+        default: "",
+    },
+    age: {
+        type: String,
+        default: "",
+    },
+    sex: {
+        type: String,
+        default: "",
+    },
+    sampleGoodOnReceipt: {
+        type: String,
+        default: "",
+    },
+    dateSampleCollected: {
+        type: String,
+        default: "",
+    },
+
+    totalNumberOfSamplesSubmitted:{
+        type: String,
+        default:""
+    },
+
+    totalNumberOfSamplesRejected:{
+        type: String,
+        default:""
+    },
+
+    presentingProblems:{
+        type: String,
+        default:""
+    },
+    testRequested: {
+        type: String,
+        default: "",
+    },
+    comments: {
+        type: String,
+        default: "",
+    },
+    labFindings: {
+        type: String,
+        default: "",
+    },
+    fecalInput: {
+        type: String,
+        default: "",
+    },
+    serumInput: {
+        type: String,
+        default: "",
+    },
+    semenInput: {
+        type: String,
+        default: "",
+    },
+    liverInput: {
+        type: String,
+        default: "",
+    },
+    swabsInput: {
+        type: String,
+        default: "",
+    },
+    skinScrapingsInput: {
+        type: String,
+        default: "",
+    },
+    urineInput: {
+        type: String,
+        default: "",
+    },
+    earSwabsInput: {
+        type: String,
+        default: "",
+    },
+    milkInput: {
+        type: String,
+        default: "",
+    },
+    impressionSmearInput: {
+        type: String,
+        default: "",
+    },
+    lymphnodeSmearInput: {
+        type: String,
+        default: "",
+    },
+    brainCrushSmearInput: {
+        type: String,
+        default: "",
+    },
+    wholeBloodInput: {
+        type: String,
+        default: "",
+    },
+    plasmaInput: {
+        type: String,
+        default: "",
+    },
+    bloodSmearInput: {
+        type: String,
+        default: "",
+    },
+    biopsyInput: {
+        type: String,
+        default: "",
+    },
+    carcassInput: {
+        type: String,
+        default: "",
+    },
+    abortedFetalInput: {
+        type: String,
+        default: "",
+    },
+    tissueOrganInput: {
+        type: String,
+        default: "",
+    },
+    feedSpecifyInput: {
+        type: String,
+        default: "",
+    },
+    otherInput: {
+        type: String,
+        default: "",
+    },
+
     date: {
         type: String,
     },
@@ -39,9 +205,14 @@ const BioSubmissionsSch = new mongoose.Schema({
       type: String,
      },
 
+     samplesRequested: {
+        type: Array
+      },
+
     examsRequested: {
       type: Array
     },
+
     // Fields from bioSubmissionsForm
     clientAddress: {
         type: String,
